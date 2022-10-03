@@ -1,0 +1,33 @@
+<%- include('partials/header') -%>
+
+<div class="companyBox">
+    <div class="companyHead">
+        <h2 class="companyTitle"><%=companyData.comName%></h2>
+        <img src="<%=companyData.imageCom%>">
+        <h1>Price: <%=companyData.price%></h1>
+    </div>
+    <div>
+        <h4>Changes Percentage: <%=companyStockData.changesPercentage%></h4>
+        <h4>Change: <%=companyStockData.change%></h4>
+    </div>
+    <div class="comDetails">
+        <ul>
+            <div class="comDetails-child">
+                <li><h4>Symbol: <%=companyData.symbol%></h4></li>
+                <li><h4>ISIN: <%=companyData.isin%></h4></li>
+                <li><h4>Phone: <%=companyData.phone%></h4></li>
+                <li><h4>Exchange: <%=companyData.exchange%></h4></li>
+            </div>
+            <div class="comDetails-child">
+                <li><h4>Opening:<%=companyStockData.open%></h4></li>
+                <li><h4>Day Low: <%=companyStockData.dayLow%></h4></li>
+                <li><h4>Day High: <%=companyStockData.dayHigh%></h4></li>
+                <li><h4>Volume: <%=companyStockData.volume%></h4></li>
+                <li><h4>Previous Close: <%=companyStockData.prevClose%></h4></li>
+            </div>
+        </ul>
+    </div>
+</div>
+<br>
+<br>
+<h3 class="comDescription"><%=companyData.description%></h3>

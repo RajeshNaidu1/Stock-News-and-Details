@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@600&display=swap');
+.content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    margin: 20px;
+    padding:10px 10px 10px 10px;
+    background-color:white;
+    width:500px;
+    height:300px;
+    overflow: scroll;
+    border-radius: 20px;
+}
+.wholeNews{
+    display:flex;
+    color:black;
+}
+.newsTitle{
+    display:flex;
+    justify-content: center;
+}
+.graph{
+    background-color: yellow;
+}
+.heading{
+    font-size:50px;
+    color:#4DADF7;
+}
+.headLines{
+    display:flex;
+    font-size:40px;
+    /* padding-bottom:30px; */
+    margin-bottom:10px;
+    justify-content: center;
+    align-items: center;
+    /* position:fixed; */
+}
+.news{
+    text-decoration: none;
+}
+a{
+    /* text-decoration: none; */
+    color:black
+}
+.image{
+    height:30px;
+    width:30px;
+    margin-top:10px;
+}
+div.newsBox {
+    width: 500px;
+    margin: auto;
+}
+body{
+    font-family: 'Crimson Text', serif;
+    /* background-image: url("https://media.istockphoto.com/vectors/abstract-financial-graph-with-uptrend-line-and-bar-chart-of-stock-on-vector-id1187660847?k=20&m=1187660847&s=170667a&w=0&h=27miB8lDTtZXZj-CX2FGrFIJ6Z8YKitLWVtliQP0bgI="); */
+    /* background-repeat: no-repeat; */
+    background-size: 100%;
+    background-color: #DCF7F7;
+}
+.search{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.top{
+    display:flex;
+    justify-content: space-evenly;
+}
+.searchBar{
+    width:400px;
+    height: 40px;
+    border-radius: 20px;
+    border-color: black;
+}
+
+.companyBox{
+    display:flex;
+    justify-content: space-around;
+}
+.companyHead{
+    margin-left: 20px;
+}
+ul {
+    list-style-type: none;
+    color:black;
+}
+.comDetails{
+    background-color: white;
+    border-radius: 20px;
+    padding-right: 15px;
+    display:flex;
+    /* opacity: 0.7; */
+}
+.comDetails-child{
+    float:left;
+    width:50%;
+}
+.comDescription{
+    background-color: white;
+    /* opacity: 0.7; */
+    border-radius: 20px;
+    padding:10px 10px 10px 10px;
+}
