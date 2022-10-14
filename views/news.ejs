@@ -1,10 +1,15 @@
 <%- include('partials/header'); -%>
 <div class="newsBox">
+    <h2 class="newsTitle"><%=title%></h2>
     <div class="newsImage">
-        <h2 class="newsTitle"><%=title%></h2>
-        <img src="<%=image%>" style="height:200px">
+        <div>
+            <img src="<%=image%>" style="height:200px">
+        </div>
+        <div class="newsContent">
+            <h4>📈<%=content%></h4>
+            <a href="<%=url%>">Click here to get full news</a>
+        </div>        
     </div>
-    <h4>📈<%=content%></h4>
 </div>
 
 </body>

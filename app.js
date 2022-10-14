@@ -20,29 +20,6 @@ app.get("/",function(req,res){
       'User-Agent': userAgent
     }
   }
-//   url="https://financialmodelingprep.com/api/v3/stock/list?apikey=313e00f0dc324a6ef23cdfd241b68b3a"
-//   https.get(url,function(resp){
-//     let symbolList
-//     resp.on('data',function(data){
-//         if(!symbolList){
-//             symbolList=data
-//         }
-//         else{
-//             symbolList+=data
-//         }
-//     })
-//     resp.on('end',function(){
-//         const symbols=JSON.parse(symbolList)
-//         for(let i=0;i<symbolList.length;i++){
-//             let list=({
-//                 symbol:symbolList[i].symbol,
-//                 name:symbolList[i].name
-//             })
-//             lists.push(list);
-//         }
-//         res.render("/",{lists:lists})
-//     })
-//   })
   posts=[]
     https.get(options,function(response){
         let dataComplete;
@@ -59,7 +36,8 @@ app.get("/",function(req,res){
                     let post=({
                         headLines:newsData.articles[i].title,
                         content: newsData.articles[i].content,
-                        image: newsData.articles[i].urlToImage
+                        image: newsData.articles[i].urlToImage,
+                        url:newsData.articles[i].url
                     })
                     posts.push(post);
                 }   
@@ -114,10 +92,11 @@ app.get("/news/:title",function(req,res){
     const title=req.params.title;
     posts.forEach(function(post){
     if(post.headLines === title){
-        res.render("news",{title:post.headLines,content:post.content,image:post.image})
+        res.render("news",{title:post.headLines,content:post.content,image:post.image,url:post.url})
     }
     })
 })
+
 app.listen(3000,function(){
     console.log("Server Created");
 });

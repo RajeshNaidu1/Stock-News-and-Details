@@ -4,30 +4,38 @@
     <div class="companyHead">
         <h2 class="companyTitle"><%=companyData.comName%></h2>
         <img src="<%=companyData.imageCom%>">
-        <h1>Price: <%=companyData.price%></h1>
+         <h1 id="price">Price:<%=companyData.price%></h1>
     </div>
     <div>
-        <h4>Changes Percentage: <%=companyStockData.changesPercentage%></h4>
-        <h4>Change: <%=companyStockData.change%></h4>
+        <p>Changes Percentage: <%=companyStockData.changesPercentage%></p>
+        <p>Change: <%=companyStockData.change%></p>
     </div>
     <div class="comDetails">
         <ul>
             <div class="comDetails-child">
-                <li><h4>Symbol: <%=companyData.symbol%></h4></li>
-                <li><h4>ISIN: <%=companyData.isin%></h4></li>
-                <li><h4>Phone: <%=companyData.phone%></h4></li>
-                <li><h4>Exchange: <%=companyData.exchange%></h4></li>
+                <li><p>Symbol: <%=companyData.symbol%></p></li>
+                <li><p>ISIN: <%=companyData.isin%></p></li>
+                <li><p>Phone: <%=companyData.phone%></p></li>
+                <li><p>Exchange: <%=companyData.exchange%></p></li>
             </div>
             <div class="comDetails-child">
-                <li><h4>Opening:<%=companyStockData.open%></h4></li>
-                <li><h4>Day Low: <%=companyStockData.dayLow%></h4></li>
-                <li><h4>Day High: <%=companyStockData.dayHigh%></h4></li>
-                <li><h4>Volume: <%=companyStockData.volume%></h4></li>
-                <li><h4>Previous Close: <%=companyStockData.prevClose%></h4></li>
+                <li><p>Opening:<%=companyStockData.open%></p></li>
+                <li><p>Day Low: <%=companyStockData.dayLow%></p></li>
+                <li><p>Day High: <%=companyStockData.dayHigh%></p></li>
+                <li><p>Volume: <%=companyStockData.volume%></p></li>
+                <li><p>Previous Close: <%=companyStockData.prevClose%></p></li>
             </div>
         </ul>
     </div>
 </div>
 <br>
 <br>
-<h3 class="comDescription"><%=companyData.description%></h3>
+<p class="comDescription"><%=companyData.description%></p>
+<script>
+    let speech = new SpeechSynthesisUtterance();
+
+    document.querySelector("body").addEventListener("mouseenter", () => {
+        speech.text = "Current Price is "+document.querySelector("#price").innerHTML;
+        window.speechSynthesis.speak(speech);
+    });
+</script>

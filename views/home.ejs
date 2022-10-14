@@ -2,7 +2,7 @@
 <div class="search">
     <div>
         <form style="display:flex" style="align-items:center" style="justify-content:space-between" method="post" action="/home">
-            <input name="company" id="company" placeholder="Enter Company's Symbol" class="searchBar" autocomplete="off" type="text">
+            <input name="company" id="company" placeholder="Enter a Company's Symbol" class="searchBar" autocomplete="off" type="text">
             <img onclick=submit() class="image" style="cursor:pointer" style="text-transform: uppercase" src="img/next.png">
         </form>
     </div>
@@ -10,17 +10,16 @@
 <div class="wholeNews">
     <div class="container">
         <h1 class="headLines" id="homeContent"><%=homeContent%></h1>
-        <% posts.forEach(function2); %>
-        <% function function2(item2) { %>
-        <div class="news">
-            <h3>📈<%=item2.headLines%>
-            <a href="/news/<%=item2.headLines%>">...read more</a></h3>
-        </div>
-        <%}%>
-    </div>
-    <div class="graph">
-        
-    </div>
+        <div class="newswrapper">
+            <% posts.forEach(function2); %>
+            <% function function2(item2) { %>
+                <div class="news">
+                    <p><a href="<%=item2.url%>">📈<%=item2.headLines%></a></p>
+                    <!-- <a href="/news/<%=item2.headLines%>">...read more</a></h3> -->
+                </div>
+                <%}%>
+            </div>
+            </div>
 </div>
 </body>
 </html>

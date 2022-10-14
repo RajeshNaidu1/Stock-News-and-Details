@@ -1,25 +1,34 @@
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 .content{
     display: flex;
     justify-content: center;
     align-items: center;
+    font-weight: normal;
 }
 .container{
     margin: 20px;
     padding:10px 10px 10px 10px;
     background-color:white;
-    width:500px;
+    width:700px;
     height:300px;
-    overflow: scroll;
     border-radius: 20px;
 }
+
 .wholeNews{
     display:flex;
+    justify-content: center;
     color:black;
 }
 .newsTitle{
     display:flex;
     justify-content: center;
+}
+.newsImage{
+    display:flex;
+    justify-content: space-between;
+}
+.newsContent{
+    width:50%;
 }
 .graph{
     background-color: yellow;
@@ -40,8 +49,13 @@
 .news{
     text-decoration: none;
 }
+.newswrapper{
+    overflow: auto;
+    height:calc(100% - 98px);
+
+}
 a{
-    /* text-decoration: none; */
+    text-decoration: none;
     color:black
 }
 .image{
@@ -50,14 +64,15 @@ a{
     margin-top:10px;
 }
 div.newsBox {
-    width: 500px;
+    width: 1000px;
     margin: auto;
 }
 body{
-    font-family: 'Crimson Text', serif;
+    font-family: 'Poppins', serif;
     /* background-image: url("https://media.istockphoto.com/vectors/abstract-financial-graph-with-uptrend-line-and-bar-chart-of-stock-on-vector-id1187660847?k=20&m=1187660847&s=170667a&w=0&h=27miB8lDTtZXZj-CX2FGrFIJ6Z8YKitLWVtliQP0bgI="); */
     /* background-repeat: no-repeat; */
     background-size: 100%;
+    font-weight: 400;
     background-color: #DCF7F7;
 }
 .search{
