@@ -41,7 +41,7 @@ app.get("/",function(req,res){
                     })
                     posts.push(post);
                 }   
-                res.render("home",{homeContent:homeContent,posts:posts})
+                res.render("home",{homeContent:homeContent,posts:posts,companyData:companyData,companyStockData:companyStockData})
             })
     })
 })
@@ -50,7 +50,8 @@ app.post("/home",function(req,res){
     const company= req.body.company
     res.redirect("/company/"+company);
 })
-
+let companyStockData=[]
+let companyData=[]
 app.get("/company/:companyName",function(req,res){
     const companyTitle1= req.params.companyName;
     const companyTitle=companyTitle1.toUpperCase();
@@ -62,7 +63,7 @@ app.get("/company/:companyName",function(req,res){
             https.get(url2,function(response){
                 response.on("data",function(data){
                         const stockData1= JSON.parse(data);
-                        let companyStockData=({
+                        companyStockData=({
                             open:stockData1[0].open,
                             changesPercentage:stockData1[0].changesPercentage,
                             change:stockData1[0].change,
@@ -71,7 +72,7 @@ app.get("/company/:companyName",function(req,res){
                             volume:stockData1[0].volume,
                             prevClose:stockData1[0].previousClose
                         })
-                        let companyData=({
+                        companyData=({
                             symbol:stockData[0].symbol,
                             price:stockData[0].price,
                             description:stockData[0].description,

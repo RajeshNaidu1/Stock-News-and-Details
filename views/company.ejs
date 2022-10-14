@@ -4,7 +4,7 @@
     <div class="companyHead">
         <h2 class="companyTitle"><%=companyData.comName%></h2>
         <img src="<%=companyData.imageCom%>">
-         <h1 id="price">Price:<%=companyData.price%></h1>
+        <h1 id="price">Price: <%=companyData.price%></h1>
     </div>
     <div>
         <p>Changes Percentage: <%=companyStockData.changesPercentage%></p>
@@ -35,7 +35,7 @@
     let speech = new SpeechSynthesisUtterance();
 
     document.querySelector("body").addEventListener("mouseenter", () => {
-        speech.text = "Current Price is "+document.querySelector("#price").innerHTML;
+        speech.text = "Current "+document.querySelector("#price").innerHTML+"$";
         window.speechSynthesis.speak(speech);
     });
 </script>
