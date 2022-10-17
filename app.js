@@ -10,6 +10,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 let posts=[]
 let lists=[]
+let blogs=[]
 const homeContent="Head Lines";
 app.get("/",function(req,res){
     const userAgent = req.get('user-agent');
@@ -41,7 +42,7 @@ app.get("/",function(req,res){
                     })
                     posts.push(post);
                 }   
-                res.render("home",{homeContent:homeContent,posts:posts,companyData:companyData,companyStockData:companyStockData})
+                res.render("home",{homeContent:homeContent,posts:posts,companyData:companyData,companyStockData:companyStockData,blogs:blogs})
             })
     })
 })
@@ -98,6 +99,21 @@ app.get("/news/:title",function(req,res){
     })
 })
 
+app.get("/compose",function(req,res){
+    res.render("compose");
+})
+app.post("/compose",function(req,res){
+    const blog={
+        title:req.body.BlogTitle,
+        body:req.body.BlogBody,
+        file:req.body.image
+    }
+    blogs.push(blog)
+    res.redirect("/")
+})
+app.get("/pins",function(req,res){
+    res.render("pins");
+})
 app.listen(3000,function(){
     console.log("Server Created");
 });

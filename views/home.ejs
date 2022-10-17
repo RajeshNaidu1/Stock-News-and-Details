@@ -1,5 +1,6 @@
 <%- include('partials/header') -%>
 <div class="search">
+    <button class="compose button-main"><a href="/compose">✍Write a Blog</a></button>
     <div>
         <form style="display:flex" style="align-items:center" style="justify-content:space-between" method="post" action="/home">
             <input name="company" id="company" onkeyup="searchCom()" placeholder="Enter a Company's Symbol" class="searchBar" autocomplete="off" type="text">
@@ -20,6 +21,14 @@
                 <%}%>
             </div>
         </div>   
+</div>
+<div class="blogSection">
+    <% blogs.forEach(function(blog){ %>
+        <div class="blog">
+            <h1><%= blog.title %></h1>
+            <p><%= blog.body%></p>
+        </div>
+        <% }) %>
 </div>
 </body>
 </html>

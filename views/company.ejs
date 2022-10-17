@@ -4,26 +4,26 @@
     <div class="companyHead">
         <h2 class="companyTitle"><%=companyData.comName%></h2>
         <img src="<%=companyData.imageCom%>">
-        <h1 id="price">Price: <%=companyData.price%></h1>
+        <h1 id="price">Price:<span style="color:red"><%=companyData.price%></span></h1>
     </div>
     <div>
-        <p>Changes Percentage: <%=companyStockData.changesPercentage%></p>
-        <p>Change: <%=companyStockData.change%></p>
+        <p>Changes Percentage: <span style="color:red"><%=companyStockData.changesPercentage%></span></p>
+        <p>Change: <span style="color:red"><%=companyStockData.change%></span></p>
     </div>
     <div class="comDetails">
         <ul>
             <div class="comDetails-child">
-                <li><p>Symbol: <%=companyData.symbol%></p></li>
-                <li><p>ISIN: <%=companyData.isin%></p></li>
-                <li><p>Phone: <%=companyData.phone%></p></li>
-                <li><p>Exchange: <%=companyData.exchange%></p></li>
+                <li><p>Symbol:<span style="color:red"><%=companyData.symbol%></span></p></li>
+                <li><p>ISIN:<span style="color:red"><%=companyData.isin%></span></p></li>
+                <li><p>Phone:<span style="color:red"><%=companyData.phone%></span></p></li>
+                <li><p>Exchange:<span style="color:red"><%=companyData.exchange%></span></p></li>
             </div>
             <div class="comDetails-child">
-                <li><p>Opening:<%=companyStockData.open%></p></li>
-                <li><p>Day Low: <%=companyStockData.dayLow%></p></li>
-                <li><p>Day High: <%=companyStockData.dayHigh%></p></li>
-                <li><p>Volume: <%=companyStockData.volume%></p></li>
-                <li><p>Previous Close: <%=companyStockData.prevClose%></p></li>
+                <li><p>Opening:<span style="color:red"><%=companyStockData.open%></span></p></li>
+                <li><p>Day Low:<span style="color:red"><%=companyStockData.dayLow%></span></p></li>
+                <li><p>Day High:<span style="color:red"><%=companyStockData.dayHigh%></span></p></li>
+                <li><p>Volume:<span style="color:red"><%=companyStockData.volume%></span></p></li>
+                <li><p>Previous Close:<span style="color:red"><%=companyStockData.prevClose%></span></p></li>
             </div>
         </ul>
     </div>
