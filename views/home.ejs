@@ -1,11 +1,19 @@
 <%- include('partials/header') -%>
 <div class="search">
-    <button class="compose button-main"><a href="/compose">✍Write a Blog</a></button>
-    <div>
+    <div><button class="compose button-main"><a href="/pins">📌My Pins</a></button></div>
+    <div><button class="compose button-main"><a href="/compose">✍Write a Blog</a></button></div>
+    <div class="companySearch">
         <form style="display:flex" style="align-items:center" style="justify-content:space-between" method="post" action="/home">
             <input name="company" id="company" onkeyup="searchCom()" placeholder="Enter a Company's Symbol" class="searchBar" autocomplete="off" type="text">
             <img onclick=submit() class="image" style="cursor:pointer" style="text-transform: uppercase" src="img/next.png">
         </form>
+    </div>
+</div>
+<div class="coverpage">
+    <div class="covertext">
+        <h1>Get the Latest News</h1>
+        <h1>Stock Prices </h1>
+        <h1>Read and Write Blogs</h1>
     </div>
 </div>
 <div class="wholeNews">
