@@ -10,6 +10,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 let posts=[]
 let lists=[]
+let graphs=[]
 let blogs=[]
 const homeContent="Head Lines";
 app.get("/",function(req,res){
@@ -32,18 +33,19 @@ app.get("/",function(req,res){
                 dataComplete+=data
             }})
         response.on('end',function(){
-                const newsData = JSON.parse(dataComplete) 
-                for(let i=0;i<10;i++){
-                    let post=({
-                        headLines:newsData.articles[i].title,
-                        content: newsData.articles[i].content,
-                        image: newsData.articles[i].urlToImage,
-                        url:newsData.articles[i].url
-                    })
-                    posts.push(post);
-                }   
-                res.render("home",{homeContent:homeContent,posts:posts,companyData:companyData,companyStockData:companyStockData,blogs:blogs})
-            })
+            const newsData = JSON.parse(dataComplete) 
+            for(let i=0;i<10;i++){
+                let post=({
+                    headLines:newsData.articles[i].title,
+                    content: newsData.articles[i].content,
+                    image: newsData.articles[i].urlToImage,
+                    url:newsData.articles[i].url
+                })
+                posts.push(post);
+                }
+                // console.log(posts);   
+            res.render("home",{homeContent:homeContent,posts:posts,companyData:companyData,companyStockData:companyStockData,blogs:blogs})
+        })
     })
 })
 
@@ -58,32 +60,56 @@ app.get("/company/:companyName",function(req,res){
     const companyTitle=companyTitle1.toUpperCase();
     const url1=`https://financialmodelingprep.com/api/v3/profile/${companyTitle}?apikey=313e00f0dc324a6ef23cdfd241b68b3a`
     const url2=`https://financialmodelingprep.com/api/v3/quote/${companyTitle}?apikey=313e00f0dc324a6ef23cdfd241b68b3a`
+    const url3=`https://financialmodelingprep.com/api/v3/historical-chart/1hour/${companyTitle}?apikey=313e00f0dc324a6ef23cdfd241b68b3a`
+    graphs=[]
     https.get(url1,function(resp){
         resp.on("data",function(data){
             const stockData= JSON.parse(data);
             https.get(url2,function(response){
                 response.on("data",function(data){
                         const stockData1= JSON.parse(data);
-                        companyStockData=({
-                            open:stockData1[0].open,
-                            changesPercentage:stockData1[0].changesPercentage,
-                            change:stockData1[0].change,
-                            dayLow:stockData1[0].dayLow,
-                            dayHigh:stockData1[0].dayHigh,
-                            volume:stockData1[0].volume,
-                            prevClose:stockData1[0].previousClose
+                        https.get(url3,function(respon){
+                            let dataComplete1;
+                            respon.on("data",function(data){
+                                if(!dataComplete1){
+                                    dataComplete1 = data
+                                }
+                                else{
+                                    dataComplete1+=data
+                                }
+                            })
+                            respon.on("end",function(){
+                                const stockData2=JSON.parse(dataComplete1);
+                                for(let i=0;i<7;i++){
+                                    let graph=({
+                                        open : stockData2[i].open
+                                    })
+                                    graphs.push(graph);
+                                
+                                }
+                                companyStockData=({
+                                    open:stockData1[0].open,
+                                    changesPercentage:stockData1[0].changesPercentage,
+                                    change:stockData1[0].change,
+                                    dayLow:stockData1[0].dayLow,
+                                    dayHigh:stockData1[0].dayHigh,
+                                    volume:stockData1[0].volume,
+                                    prevClose:stockData1[0].previousClose
+                                })
+                                // console.log(companyStockData)
+                                companyData=({
+                                    symbol:stockData[0].symbol,
+                                    price:stockData[0].price,
+                                    description:stockData[0].description,
+                                    exchange:stockData[0].exchange,
+                                    isin:stockData[0].isin,
+                                    phone:stockData[0].phone,
+                                    imageCom:stockData[0].image,
+                                    comName:stockData[0].companyName
+                                })
+                                res.render("company",{companyData:companyData,companyStockData:companyStockData,graphs:graphs,price:graphs[0].open})
+                            })
                         })
-                        companyData=({
-                            symbol:stockData[0].symbol,
-                            price:stockData[0].price,
-                            description:stockData[0].description,
-                            exchange:stockData[0].exchange,
-                            isin:stockData[0].isin,
-                            phone:stockData[0].phone,
-                            imageCom:stockData[0].image,
-                            comName:stockData[0].companyName
-                        })
-                        res.render("company",{companyData:companyData,companyStockData:companyStockData})
                 })
                 })
         })
